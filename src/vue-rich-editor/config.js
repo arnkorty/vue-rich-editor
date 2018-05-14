@@ -11,8 +11,17 @@ import DeleteAction from 'n-quill-blot-formatter/dist/actions/DeleteAction';
 import ImageLink from './custom-modules/image-link/index';
 
 const config = {};
+const maxRows = 10;
+const maxCols = 5;
+const tableOptions = [];
+for (let r = 1; r <= maxRows; r++) {
+   for (let c = 1; c <= maxCols; c++) {
+       tableOptions.push('newtable_' + r + '_' + c);
+   }
+}
 
 config.defaultEditorContainer = [
+    [{table: tableOptions}, {table: 'append-row'}, {table: 'append-col'}],
     ['link', 'bold', 'italic', 'underline'],
     [{ color: [] }],
     [
@@ -30,7 +39,7 @@ config.defaultEditorContainer = [
 
 config.defaultClipboardFormats = [
     'link', 'bold', 'italic', 'underline',
-    'color', 'list', 'image',
+    'color', 'list', 'image', 'table',
     'width', 'height', 'size', 'header'
 ];
 

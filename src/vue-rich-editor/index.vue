@@ -21,6 +21,15 @@
 import Quill from 'quill';
 import _ from './extend/util';
 
+import quillTable from 'quill-table';
+window.Quill = Quill
+window.quillTable = quillTable
+Quill.register(quillTable.TableCell);
+Quill.register(quillTable.TableRow);
+Quill.register(quillTable.Table);
+Quill.register(quillTable.Contain);
+Quill.register('modules/table', quillTable.TableModule);
+
 import Config from './config';
 
 export default {
@@ -158,12 +167,13 @@ export default {
         setQuillElement() {
             const _modulesConf = {
                 toolbar: {
-                    container: this.toolbarContainer,
-                    handlers: this.toolbarHandlers
+                  container: this.toolbarContainer,
+                  handlers: this.toolbarHandlers
                 },
                 clipboard: {
-                    matchVisual: false
+                   matchVisual: false
                 },
+                table: true,
                 imageLink: true
             };
 
@@ -175,6 +185,8 @@ export default {
                     specs: [Config.MyImageSpec]
                 };
             }
+
+            console.log('modules', _modulesConf)
 
             this.quill = new Quill(this.$refs.quillContainer, {
                 theme: 'snow',
@@ -222,7 +234,6 @@ export default {
             const self = this;
 
             this.quill.on('selection-change', (range, oldRange, source) => {
-                console.log(source);
                 if(range) {
                     if(range.length == 0) {
                         self.$emit('reFocus', range);
