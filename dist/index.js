@@ -24354,80 +24354,80 @@ var maxRows = 10;
 var maxCols = 5;
 var tableOptions = [];
 for (var r = 1; r <= maxRows; r++) {
-    for (var c = 1; c <= maxCols; c++) {
-        tableOptions.push('newtable_' + r + '_' + c);
-    }
+  for (var c = 1; c <= maxCols; c++) {
+    tableOptions.push('newtable_' + r + '_' + c);
+  }
 }
 
-config.defaultEditorContainer = [[{ table: tableOptions }, { table: 'append-row' }, { table: 'append-col' }], ['link', 'bold', 'italic', 'underline', { 'hr': 'hr' }], [{ color: [] }], [{ list: 'bullet' }, { list: 'ordered' }], ['image', 'image-link'], [{
-    size: ['32px', '24px', '18px', '16px', '13px', '12px', false]
-}], ['clean']];
+config.defaultEditorContainer = [[{ table: tableOptions }, { table: 'append-row' }, { table: 'append-col' }], ['link', 'bold', 'italic', 'underline', { 'hr': 'hr' }], [{ color: [] }, { background: [] }, { 'indent': '-1' }, { 'indent': '+1' }], [{ list: 'bullet' }, { list: 'ordered' }], ['blockquote', 'code-block'], ['image', 'image-link'], [{
+  size: ['32px', '24px', '18px', '16px', '13px', '12px', false]
+}], [{ 'header': [1, 2, 3, 4, 5, 6, false] }], ['clean']];
 
 config.defaultClipboardFormats = ['link', 'bold', 'italic', 'underline', 'hr', 'align', 'background', 'link', 'video', 'blockquote', 'code-block', 'color', 'list', 'image', 'table', 'indent', 'width', 'height', 'size', 'header'];
 
-config.defaultQuillRegisterKeys = ['inline', 'size', 'imageResize', 'imageLink'];
+config.defaultQuillRegisterKeys = ['inline', 'size', 'background', 'blockquote', 'code-block', 'indent', 'header', 'imageResize', 'imageLink'];
 
 config.ENUM_MAP = {
-    inline: [{
-        key: 'formats/bold',
-        value: __WEBPACK_IMPORTED_MODULE_5__rewrite_set_style_method_bold__["a" /* default */]
-    }, {
-        key: 'formats/italic',
-        value: __WEBPACK_IMPORTED_MODULE_6__rewrite_set_style_method_italic__["a" /* default */]
-    }, {
-        key: 'formats/underline',
-        value: __WEBPACK_IMPORTED_MODULE_7__rewrite_set_style_method_underline__["a" /* default */]
-    }],
-    size: [{
-        key: 'formats/size',
-        value: __WEBPACK_IMPORTED_MODULE_8__rewrite_set_style_method_size__["a" /* default */]
-    }],
-    imageResize: [{
-        key: 'modules/blotFormatter',
-        value: __WEBPACK_IMPORTED_MODULE_9_n_quill_blot_formatter___default.a
-    }],
-    imageLink: [{
-        key: 'modules/imageLink',
-        value: __WEBPACK_IMPORTED_MODULE_13__custom_modules_image_link_index__["a" /* default */]
-    }]
+  inline: [{
+    key: 'formats/bold',
+    value: __WEBPACK_IMPORTED_MODULE_5__rewrite_set_style_method_bold__["a" /* default */]
+  }, {
+    key: 'formats/italic',
+    value: __WEBPACK_IMPORTED_MODULE_6__rewrite_set_style_method_italic__["a" /* default */]
+  }, {
+    key: 'formats/underline',
+    value: __WEBPACK_IMPORTED_MODULE_7__rewrite_set_style_method_underline__["a" /* default */]
+  }],
+  size: [{
+    key: 'formats/size',
+    value: __WEBPACK_IMPORTED_MODULE_8__rewrite_set_style_method_size__["a" /* default */]
+  }],
+  imageResize: [{
+    key: 'modules/blotFormatter',
+    value: __WEBPACK_IMPORTED_MODULE_9_n_quill_blot_formatter___default.a
+  }],
+  imageLink: [{
+    key: 'modules/imageLink',
+    value: __WEBPACK_IMPORTED_MODULE_13__custom_modules_image_link_index__["a" /* default */]
+  }]
 };
 
 var MyResizeAction = function (_ResizeAction) {
-    __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits___default()(MyResizeAction, _ResizeAction);
+  __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits___default()(MyResizeAction, _ResizeAction);
 
-    function MyResizeAction() {
-        __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck___default()(this, MyResizeAction);
+  function MyResizeAction() {
+    __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck___default()(this, MyResizeAction);
 
-        return __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, (MyResizeAction.__proto__ || __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_get_prototype_of___default()(MyResizeAction)).apply(this, arguments));
+    return __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, (MyResizeAction.__proto__ || __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_get_prototype_of___default()(MyResizeAction)).apply(this, arguments));
+  }
+
+  __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_createClass___default()(MyResizeAction, [{
+    key: 'onUpdate',
+    value: function onUpdate() {
+      //
     }
+  }]);
 
-    __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_createClass___default()(MyResizeAction, [{
-        key: 'onUpdate',
-        value: function onUpdate() {
-            //
-        }
-    }]);
-
-    return MyResizeAction;
+  return MyResizeAction;
 }(__WEBPACK_IMPORTED_MODULE_11_n_quill_blot_formatter_dist_actions_ResizeAction___default.a);
 
 var MyImageSpec = function (_ImageSpec) {
-    __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits___default()(MyImageSpec, _ImageSpec);
+  __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits___default()(MyImageSpec, _ImageSpec);
 
-    function MyImageSpec() {
-        __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck___default()(this, MyImageSpec);
+  function MyImageSpec() {
+    __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_classCallCheck___default()(this, MyImageSpec);
 
-        return __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, (MyImageSpec.__proto__ || __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_get_prototype_of___default()(MyImageSpec)).apply(this, arguments));
+    return __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default()(this, (MyImageSpec.__proto__ || __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_get_prototype_of___default()(MyImageSpec)).apply(this, arguments));
+  }
+
+  __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_createClass___default()(MyImageSpec, [{
+    key: 'getActions',
+    value: function getActions() {
+      return [MyResizeAction, __WEBPACK_IMPORTED_MODULE_12_n_quill_blot_formatter_dist_actions_DeleteAction___default.a];
     }
+  }]);
 
-    __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_createClass___default()(MyImageSpec, [{
-        key: 'getActions',
-        value: function getActions() {
-            return [MyResizeAction, __WEBPACK_IMPORTED_MODULE_12_n_quill_blot_formatter_dist_actions_DeleteAction___default.a];
-        }
-    }]);
-
-    return MyImageSpec;
+  return MyImageSpec;
 }(__WEBPACK_IMPORTED_MODULE_10_n_quill_blot_formatter_dist_specs_ImageSpec___default.a);
 
 config.MyImageSpec = MyImageSpec;
