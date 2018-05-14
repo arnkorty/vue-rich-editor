@@ -22,7 +22,7 @@ for (let r = 1; r <= maxRows; r++) {
 
 config.defaultEditorContainer = [
     [{table: tableOptions}, {table: 'append-row'}, {table: 'append-col'}],
-    ['link', 'bold', 'italic', 'underline'],
+    ['link', 'bold', 'italic', 'underline', {'hr': 'hr'}],
     [{ color: [] }],
     [
         { list: 'bullet' },
@@ -38,7 +38,7 @@ config.defaultEditorContainer = [
 ];
 
 config.defaultClipboardFormats = [
-    'link', 'bold', 'italic', 'underline',
+    'link', 'bold', 'italic', 'underline', 'hr',
     'color', 'list', 'image', 'table',
     'width', 'height', 'size', 'header'
 ];

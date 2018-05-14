@@ -1,14 +1,26 @@
 .ql-image-link {
-    .ql-image-link-inner {
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        &::before {
-            content: '图';
-            font-size: 14px;
-            font-weight: bold;
-            line-height: 18px;
-            text-align: center;
-        }
+  .ql-image-link-inner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    &::before {
+      content: '图';
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 18px;
+      text-align: center;
     }
+  }
+}
+.ql-hr {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  &::before {
+    content: 'hr';
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    text-align: center;
+  }
 }
