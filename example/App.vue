@@ -1,52 +1,51 @@
 <template>
-<div id='app'>
-  <div class='ve-container'>
-    <h3>vue rich editor example</h3>
-    <vue-rich-editor
-      :id='editorId'
-      :quillRegisterKeys='quillRegisterKeys'
-      useCustomImageHandler
-      :disabled='editorIsDisabled'
-      v-model='editorContent'
-      @imageAdded='uploadImage' />
-    <div class='ve-button-area'>
-      <button
-        class='ve-button'
-        @click='saveContent(editorContent)'>
-        save content
-      </button>
+    <div id="app">
+        <div class="ve-container">
+            <h3>vue rich editor example</h3>
+            <vue-rich-editor
+                :id="editorId"
+                :quillRegisterKeys="quillRegisterKeys"
+                useCustomImageHandler
+                useCustomImageLinkHandler
+                :disabled="editorIsDisabled"
+                :linkPlaceholder="linkPlaceholder"
+                v-model="editorContent"
+                @reBlur="editorBlurEvt"
+                @reFocus="editorFocusEvt"
+                @reHighlighted="editorHighlightedEvt"
+                @reImageAdded="uploadImage"
+                @reImageLink="addImageLink"
+            />
+            <div class="ve-button-area">
+                <button
+                    class="ve-button"
+                    @click="saveContent(editorContent)">
+                    save content
+                </button>
 
-      <button
-        class='ve-button'
-        @click='setEditor(setEditorDemo)'>
-        set editor
-      </button>
+                <button
+                    class="ve-button"
+                    @click="setEditor(setEditorDemo)">
+                    set editor
+                </button>
+            </div>
+        </div>
+
+        <div class="ve-container">
+            <h3>vue rich editor example2</h3>
+            <vue-rich-editor
+                :id="editorId1"
+                :quillRegisterKeys="quillRegisterKeys1"
+                useCustomImageHandler
+                useCustomImageLinkHandler
+                :disabled="editorIsDisabled1"
+                :linkPlaceholder="linkPlaceholder1"
+                v-model="editorContent1"
+                @reImageAdded="uploadImage1"
+                @reImageLink="addImageLink1"
+            />
+        </div>
     </div>
-  </div>
-
-  <div class='ve-container'>
-    <h3>vue rich editor example2</h3>
-    <vue-rich-editor
-      :id='editorId1'
-      useCustomImageHandler
-      :disabled='editorIsDisabled'
-      v-model='editorContent1'
-      @imageAdded='uploadImage' />
-    <div class='ve-button-area'>
-      <button
-        class='ve-button'
-        @click='saveContent(editorContent1)'>
-        save content
-      </button>
-
-      <button
-        class='ve-button'
-        @click='setEditor(setEditorDemo)'>
-        set editor
-      </button>
-    </div>
-  </div>
-</div>
 </template>
 
 <script>
@@ -55,71 +54,122 @@ import axios from 'axios';
 import { Config } from './config';
 
 export default {
-  components: {
-    VueRichEditor
-  },
-  data() {
-    return {
-      editorId: 'editor1222',
-      editorId1: 'editor0',
-      editorContent: 'demo string<img src="https://olx7tg2rm.qnssl.com/new.png" />',
-      editorContent1: 'demo1',
-      setEditorDemo: '<h1>hahahah</h1>',
-      editorIsDisabled: false,
-      quillRegisterKeys: ['inline', 'size', 'imageResize']
-    };
-  },
-  methods: {
-    setEditor(str = 'demo') {
-      this.editorContent = str;
+    components: {
+        VueRichEditor
     },
+    data() {
+        return {
+            editorId: 'editor',
+            editorContent: 'demo string<br/><img src="http://olz3b8fm9.bkt.clouddn.com/18-1-11/17450321.jpg" width="200px" height="100px" />',
+            setEditorDemo: '<h1>hahahah</h1>',
+            editorIsDisabled: false,
+            quillRegisterKeys: ['inline', 'size', 'imageResize', 'imageLink'],
+            linkPlaceholder: '请输入链接',
 
-    saveContent(content = '') {
-      console.log(content);
+            //
+            editorId1: 'editor1',
+            editorContent1: 'demo1<img src="http://olz3b8fm9.bkt.clouddn.com/18-1-11/17450321.jpg" width="200px" height="100px" />',
+            setEditorDemo1: '<h2>hahahah</h2>',
+            editorIsDisabled1: false,
+            quillRegisterKeys1: ['inline', 'size', 'imageResize', 'imageLink'],
+            linkPlaceholder1: '请输入链接1'
+        };
     },
+    methods: {
+        setEditor(str = 'demo') {
+            this.editorContent = str;
+        },
 
-    uploadImage(file, Editor, cursorLocation) {
-      const self = this;
-      let formData = new FormData();
-      formData.append(Config.imageFileName, file);
+        saveContent(content = '') {
+            console.log(content);
+        },
 
-      this.editorIsDisabled = true;
+        editorFocusEvt(range) {
+            console.log(range);
+            console.log('Cursor in the editor');
+        },
 
-      axios({
-        url: Config.URL.UPLOAD_IMAGE,
-        method: 'POST',
-        data: formData
-      })
-        .then(result => {
-          self.editorIsDisabled = false;
-          console.log(result);
-          let url = result.data.data.url;
-          Editor.insertEmbed(cursorLocation, 'image', url);
-        })
-        .catch(err => {
-          self.editorIsDisabled = false;
-          console.log(err);
-        });
+        editorBlurEvt() {
+            console.log('Cursor not in the editor');
+        },
+        editorHighlightedEvt(text, range) {
+            console.log('User has highlighted: ', text);
+            console.log(range);
+        },
+
+        uploadImage(options) {
+            const self = this;
+            const {
+                file,
+                Editor,
+                cursorLocation
+            } = options;
+            let formData = new FormData();
+            formData.append(Config.imageFileName, file);
+
+            this.editorIsDisabled = true;
+
+            axios({
+                url: Config.URL.UPLOAD_IMAGE,
+                method: 'POST',
+                data: formData
+            })
+                .then(result => {
+                    self.editorIsDisabled = false;
+                    console.log(result);
+                    let url = result.data.data.url;
+                    Editor.insertEmbed(cursorLocation, 'image', url);
+                })
+                .catch(err => {
+                    self.editorIsDisabled = false;
+                    console.log(err);
+                });
+        },
+
+        addImageLink(type = 'ok', options) {
+            const {
+                url,
+                Editor,
+                cursorLocation
+            } = options;
+            if(type == 'cancel') {
+                return false;
+            }
+            if(type == 'ok') {
+                if(url != '') {
+                    alert(url);
+                } else {
+                    alert('url 必填哈');
+                }
+            }
+        },
+
+        uploadImage1(options) {
+            console.log(options);
+        },
+
+        addImageLink1(type, options) {
+            console.log(type, options);
+        },
     }
-  }
 };
 </script>
 
 <style lang='scss'>
 .ve-container {
-  position: relative;
-  width: calc(100% - 40px);
-  margin: 0 auto;
-  .ve-button-area {
-    margin: 10px 0 0 0;
-    .ve-button {
-      padding: 4px 10px;
-      background: #00a3cf;
-      border: 0;
-      border-radius: 3px;
-      color: #fff;
-      cursor: pointer;
+    position: relative;
+    width: calc(100% - 40px);
+    margin: 0 auto;
+    .ve-button-area {
+        margin: 10px 0 0 0;
+        .ve-button {
+        padding: 4px 10px;
+        background: #00a3cf;
+        border: 0;
+        border-radius: 3px;
+        color: #fff;
+        cursor: pointer;
+        }
     }
-  }
 }
 </style>
