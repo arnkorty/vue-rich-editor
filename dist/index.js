@@ -24363,7 +24363,7 @@ config.defaultEditorContainer = [[{ table: tableOptions }, { table: 'append-row'
     size: ['32px', '24px', '18px', '16px', '13px', '12px', false]
 }], ['clean']];
 
-config.defaultClipboardFormats = ['link', 'bold', 'italic', 'underline', 'hr', 'color', 'list', 'image', 'table', 'width', 'height', 'size', 'header'];
+config.defaultClipboardFormats = ['link', 'bold', 'italic', 'underline', 'hr', 'align', 'background', 'link', 'video', 'blockquote', 'code-block', 'color', 'list', 'image', 'table', 'indent', 'width', 'height', 'size', 'header'];
 
 config.defaultQuillRegisterKeys = ['inline', 'size', 'imageResize', 'imageLink'];
 
