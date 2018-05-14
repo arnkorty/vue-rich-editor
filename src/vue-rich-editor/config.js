@@ -39,7 +39,8 @@ config.defaultEditorContainer = [
 
 config.defaultClipboardFormats = [
     'link', 'bold', 'italic', 'underline', 'hr',
-    'color', 'list', 'image', 'table',
+    'align', 'background', 'link', 'video', 'blockquote', 'code-block',
+    'color', 'list', 'image', 'table', 'indent',
     'width', 'height', 'size', 'header'
 ];
 
