@@ -24359,7 +24359,7 @@ for (var r = 1; r <= maxRows; r++) {
   }
 }
 
-config.defaultEditorContainer = [[{ table: tableOptions }, { table: 'append-row' }, { table: 'append-col' }], ['link', 'bold', 'italic', 'underline', { 'hr': 'hr' }], [{ color: [] }, { background: [] }, { 'indent': '-1' }, { 'indent': '+1' }], [{ list: 'bullet' }, { list: 'ordered' }], ['blockquote', 'code-block'], ['image', 'image-link'], [{
+config.defaultEditorContainer = [[{ table: tableOptions }, { table: 'append-row' }, { table: 'append-col' }], [{ align: [] }], ['link', 'bold', 'italic', 'underline', { 'hr': 'hr' }], [{ color: [] }, { background: [] }, { 'indent': '-1' }, { 'indent': '+1' }], [{ list: 'bullet' }, { list: 'ordered' }], ['blockquote', 'code-block'], ['image', 'image-link', 'link', 'video'], [{
   size: ['32px', '24px', '18px', '16px', '13px', '12px', false]
 }], [{ 'header': [1, 2, 3, 4, 5, 6, false] }], ['clean']];
 

@@ -22,6 +22,7 @@ for (let r = 1; r <= maxRows; r++) {
 
 config.defaultEditorContainer = [
   [{table: tableOptions}, {table: 'append-row'}, {table: 'append-col'}],
+  [{align: []}],
   ['link', 'bold', 'italic', 'underline', {'hr': 'hr'}],
   [{ color: []},{ background: [] }, { 'indent': '-1' }, { 'indent': '+1' }],
   [
@@ -29,7 +30,7 @@ config.defaultEditorContainer = [
     { list: 'ordered' }
   ],
   ['blockquote', 'code-block'],
-  ['image', 'image-link'],
+  ['image', 'image-link', 'link', 'video'],
   [
     {
       size: ['32px', '24px', '18px', '16px', '13px', '12px', false]
