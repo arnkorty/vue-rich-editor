@@ -24365,7 +24365,7 @@ config.defaultEditorContainer = [[{ table: tableOptions }, { table: 'append-row'
 
 config.defaultClipboardFormats = ['link', 'bold', 'italic', 'underline', 'hr', 'align', 'background', 'link', 'video', 'blockquote', 'code-block', 'color', 'list', 'image', 'table', 'indent', 'width', 'height', 'size', 'header'];
 
-config.defaultQuillRegisterKeys = ['inline', 'size', 'background', 'blockquote', 'code-block', 'indent', 'header', 'imageResize', 'imageLink'];
+config.defaultQuillRegisterKeys = ['inline', 'size', 'background', 'blockquote', 'code-block', 'align', 'indent', 'header', 'imageResize', 'imageLink'];
 
 config.ENUM_MAP = {
   inline: [{
@@ -27882,7 +27882,7 @@ var Component = __webpack_require__(127)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/arnkorty/amr333/vue-rich-editor/src/vue-rich-editor/index.vue"
+Component.options.__file = "/home/arnkorty/vue-rich-editor/src/vue-rich-editor/index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 

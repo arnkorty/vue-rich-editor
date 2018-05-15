@@ -52,6 +52,7 @@ config.defaultQuillRegisterKeys = [
   'background',
   'blockquote',
   'code-block',
+  'align',
   'indent',
   'header',
   'imageResize',
